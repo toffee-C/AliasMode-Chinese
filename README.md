@@ -2,6 +2,9 @@
 **原版回主分支下载**
 这是 [AliasMode](https://github.com/AliciaLEO/aliasmode) 的简体中文版：控制面板的界面换成了中文，也可以随时切回英文。
 功能和原版完全一样，只翻译了界面文字。基于原项目修改，沿用 Apache-2.0 协议。
+#AliasMode Simplified Chinese Version
+This is [Alyas Mod]（ https://github.com/AliciaLEO/aliasmode ）Simplified Chinese version: The interface of the control panel has been changed to Chinese, and it can also be switched back to English at any time.
+The function is exactly the same as the original version, only the interface text has been translated. Based on the original project modifications, the Apache-2.0 protocol will be used.
 
 ## 下载哪个文件
 
