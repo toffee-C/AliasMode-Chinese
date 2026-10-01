@@ -1,3 +1,63 @@
+# AliasMode 简体中文版
+**原版回主分支下载**
+这是 [AliasMode](https://github.com/AliciaLEO/aliasmode) 的简体中文版：控制面板的界面换成了中文，也可以随时切回英文。
+功能和原版完全一样，只翻译了界面文字。基于原项目修改，沿用 Apache-2.0 协议。
+
+## 下载哪个文件
+
+| 文件 | 适合谁 |
+|---|---|
+| `AliasMode-0.1.0-beta.50-zh-CN-sidecar.zip` | **普通用户**：已经装了 AliasMode **0.1.0-beta.50**，想直接换成中文 |
+| `AliasMode-zh-CN-patch-and-source.zip` | **开发者**：想自己从源码编译，或把汉化合并进自己的代码 |
+
+## 安装（普通用户）
+
+> 只适用于 **AliasMode 0.1.0-beta.50（Windows）**。其他版本请不要替换，可能导致程序无法启动。
+
+1. **完全退出 AliasMode**，右下角托盘里的图标也要退出。
+2. 打开 AliasMode 的安装目录，找到 `aliasmode-sidecar.exe`。
+3. **先备份**：把它复制一份，改名为 `aliasmode-sidecar.exe.bak`。
+4. 解压下载的压缩包，用其中的 `program\aliasmode-sidecar.exe` 覆盖安装目录里的同名文件。
+5. 重新打开 AliasMode。
+
+## 切换语言
+
+- 系统语言是中文时，会自动显示中文。
+- 也可以手动切换：**设置 → 账户 → 语言 · Language**，选择 **简体中文** 或 **English**。界面会刷新一次，之后会记住你的选择。
+
+## 恢复英文原版
+
+退出 AliasMode，把备份的 `aliasmode-sidecar.exe.bak` 改回 `aliasmode-sidecar.exe`，覆盖汉化版即可。
+
+## 注意事项
+
+- **官方自动更新会覆盖汉化文件**，更新后界面会变回英文，请等待对应版本的汉化包。
+- 少数内容仍是英文：后台服务返回的部分错误信息、日志内容，以及 AliasMode Cloud、Chrome、CloakBrowser 等品牌和产品名。
+- 发现翻译有误或不通顺，欢迎提交 Issue 反馈。
+
+## 开发者：从源码编译
+
+`AliasMode-zh-CN-patch-and-source.zip` 中包含：
+
+| 路径 | 内容 |
+|---|---|
+| `patch/aliasmode-zh-CN-for-beta.50.patch` | 适用于 v0.1.0-beta.50（提交 `86d8348`）的 git 补丁 |
+| `patch/aliasmode-zh-CN-for-main-ca56a14.patch` | 适用于上游 main（提交 `ca56a14`）的 git 补丁 |
+| `source-files/<版本>/web/…` | 改动后的源码文件，可以直接覆盖源码中的 `web/` 目录 |
+
+在原版源码目录中应用补丁：`git am <补丁文件>`。然后编译 sidecar，需要 Bun **1.2.21**：
+
+```bash
+bun install
+bun build --compile --target=bun-windows-x64-baseline --define=ALIASMODE_COMPILED=true \
+  --external=playwright-core --external=chromium-bidi --external=electron \
+  cli.ts --outfile aliasmode-sidecar.exe
+```
+
+翻译文件是 `web/locales/zh-CN.ts`：左边是英文原文，右边是中文译文。修改时请保留 `{0}`、`{1}` 等占位符。详细说明见 `web/locales/README.md`。
+
+
+
 # AliasMode
 
 AliasMode is a free, open-source antidetect browser and local-first profile manager, with its own open-source engine, [AliasMode Firefox](https://github.com/aliasmode/aliasmode-firefox), and optional cloud synchronization for teams.
